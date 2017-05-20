@@ -13,3 +13,12 @@ describe('Requests to root path', function(){
      });
    });
 });
+
+describe('Listin Cities on /cities', function(){
+ 
+  it('Returns a 200 status code', function(done){
+	request(app)
+	.get('/cities')
+	.expect(200, done);
+  });
+});
