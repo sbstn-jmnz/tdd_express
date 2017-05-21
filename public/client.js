@@ -10,16 +10,14 @@ $(function(){
 
     $('.alert').hide();
 
-    $.ajax({
-      type: 'POST', url: '/weeds', data: weedData
-    })
-    .error(function() {
+    $.ajax({ type: 'POST', url: '/weeds', data: weedData })
+     .error(function() {
       $('.alert').show();
-    })
-    .success(function(weedName){
-      appendToList([weedName]);
-      form.trigger('reset');
-    });
+      })
+      .success(function(weedName){
+        appendToList([weedName]);
+        form.trigger('reset');
+      });
   });
 
   function appendToList(weeds) {
