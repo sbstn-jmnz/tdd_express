@@ -39,7 +39,22 @@ describe('Listin weeds on /weeds', function(){
   it('Returns initial weeds', function(done){
 	request(app)
 	.get('/weeds')
-	.expect(JSON.stringify(['Medical', 'Jack', 'Moby Dick']), done);
+	.expect(JSON.stringify(["Medical","Jack","Moby Dick"]), done);
+  });
+});
+
+describe('Creating new weeds', function(){
+  it('Returns a new 201 status code', function(done){
+    request(app)
+     .post('/weeds')
+     .send('name=Ganja&description=where+magic+begins')
+     .expect(201,done);
   });
 
+  it('Returns the city name', function(done){
+    request(app)
+    .post('/weeds')
+    .send('name=Ganja&description=where+magic+begins')
+    .expect(/ganja/i,done);
+  })
 });
